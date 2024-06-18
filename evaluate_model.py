@@ -37,7 +37,7 @@ def top_k_accuracy_score(y_true, y_proba, k=1):
 
 if __name__ == "__main__":
     _, test = load_data()
-    model = load_model("models/cefr-xgboost.pickle")
+    model = load_model("models/cefr-logistic_regression.pickle")
     print(generate_confusion_matrix(model, test))
     print(get_classification_report(model, test))
     print(get_top_k_accuracy(model, test, k=2))

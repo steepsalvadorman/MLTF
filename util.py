@@ -6,7 +6,7 @@ RANDOM_SEED = 0
 
 
 def load_data():
-    data = pd.read_csv("data/preprocessed_cefr_leveled_texts.csv")
+    data = pd.read_csv("C:/Users/Steep/Desktop/proyecto/Abraham/data/CEFR/preprocessed_cefr_leveled_texts.csv")
     train, test = train_test_split(
         data, test_size=0.2, random_state=RANDOM_SEED, stratify=data.label
     )

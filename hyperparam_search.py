@@ -12,7 +12,7 @@ RANDOM_SEED = 0
 
 
 def compare_models():
-    """Compares several classifiers by performing Beyesian optimization on each one and
+    """Compares several classifiers by performing Bayesian optimization on each one and
     then ranking the results.
     """
     train, test = load_data()
@@ -94,7 +94,7 @@ def get_model_configs():
             "params": {
                 "bootstrap": [True, False],
                 "max_depth": (10, 100),
-                "max_features": ["auto", "sqrt"],
+                "max_features": ["sqrt", "log2", None],  # Cambia 'auto' a 'sqrt'
                 "min_samples_leaf": (1, 5),
                 "min_samples_split": (2, 10),
                 "n_estimators": (100, 500),
@@ -109,7 +109,7 @@ def get_model_configs():
         {
             "name": "XGBoost",
             "model": XGBClassifier(
-                objective="multi:softprob", random_state=RANDOM_SEED
+                objective="multi:softprob", random_state=RANDOM_SEED, use_label_encoder=False
             ),
             "class": XGBClassifier,
             "params": {
@@ -119,8 +119,9 @@ def get_model_configs():
                 "colsample_bytree": (0.8, 1.0),
                 "gamma": (0, 5),
                 "n_estimators": (10, 500),
-            },
         },
+        }
+,
     ]
 
 
