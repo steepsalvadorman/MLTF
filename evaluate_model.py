@@ -5,7 +5,6 @@ from util import load_data, load_model
 
 LABELS = ["A1", "A2", "B1", "B2", "C1", "C2"]
 
-
 def generate_confusion_matrix(model, test_set):
     X = test_set.drop("label", axis=1)
     y_true = test_set["label"]
